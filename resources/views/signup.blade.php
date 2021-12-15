@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -207,6 +206,23 @@
             outline: none;
             transform: scale(1.04);
         }
+
+        input[type="text"] {
+            padding: 10px 16px;
+            font-size: 16px;
+            color: var(--black);
+            background-color: #fff;
+            border: 1px solid #597183;
+            border-radius: 8px;
+            margin-top: 5px;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            transform: scale(1.04);
+        }
     </style>
 </head>
 
@@ -220,7 +236,11 @@
                             <div class="row justify-content-center px-3 mb-3"> <img id="logo"
                                     src="https://www.pngitem.com/pimgs/m/62-622830_png-books-black-and-white-book-logo-transparent.png"> </div>
                             <h3 class="mb-5 text-center heading">BookHub</h3>
-                            <h6 class="msg-info">Please login to your account</h6>
+                            <h6 class="msg-info">Please Create your account</h6>
+                            <div class="form-group"> <label class="form-control-label text-muted">Full Name</label>
+                                <input type="text" id="text" name="text" placeholder="Full Name"
+                                    class="form-control">
+                            </div>
                             <div class="form-group"> <label class="form-control-label text-muted">Username</label>
                                 <input type="email" id="email" name="email" placeholder="Email"
                                     class="form-control">
@@ -228,15 +248,13 @@
                             <div class="form-group"> <label class="form-control-label text-muted">Password</label>
                                 <input type="password" id="psw" name="psw" placeholder="Password" class="form-control">
                             </div>
-                            <div class="row justify-content-center my-3 px-3"> <button class="btn-block btn-color">Login
-                                    to BookHub</button> </div>
-                            <div class="row justify-content-center my-2"> <a href="#"><small class="text-muted">Forgot
-                                        Password?</small></a> </div>
+                            <div class="row justify-content-center my-3 px-3"> <button class="btn-block btn-color">Create Account</button> </div>
+                            
                         </div>
                     </div>
                     <div class="bottom text-center mb-5">
-                        <p href="#" class="sm-text mx-auto mb-3">Don't have an account?<button
-                                class="btn btn-white ml-2">Create new</button></p>
+                        <p href="#" class="sm-text mx-auto mb-3">Already have an account ?<button
+                                class="btn btn-white ml-2">Login Now</button></p>
                     </div>
                 </div>
                 <div class="card card2">
@@ -250,7 +268,6 @@
             </div>
         </div>
     </div>
-
 </body>
 
 </html>

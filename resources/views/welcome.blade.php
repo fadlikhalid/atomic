@@ -401,10 +401,52 @@
         body {
             font-family: 'Nunito', sans-serif;
         }
+
+
+        .topnav {
+            overflow: hidden;
+            background-color: #FFFFFF;
+        }
+
+        .topnav a {
+            float: left;
+            color: #4F4F4F;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        .topnav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .topnav a.active {
+            background-color: #E16A00;
+            color: white;
+        }
+
+        .topnav-right {
+            float: right;
+        }
+
     </style>
 </head>
 
 <body class="antialiased">
+
+    <div class="topnav">
+        <a href="#LOGO">BookHub</a>
+        <div class="topnav-right">
+            <a href="#home">What we do</a>
+            <a href="#news">Genre</a>
+            <a href="#contact">Author</a>
+            <a href="#search"><u>Search Books &#128269;</u></a>
+            <a class="active" href="#about">Login</a>
+        </div>
+    </div>
+
     <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
         @if (Route::has('login'))
         <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
@@ -441,7 +483,9 @@
 
                         <div class="ml-12">
                             <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
+
                                 Laravel has wonderful Aldika Prya, thorough documentation covering every aspect of the framework. Whether you are new to the framework or have previous experience with Laravel, we recommend reading all of the documentation from beginning to end.
+
                             </div>
                         </div>
                     </div>
