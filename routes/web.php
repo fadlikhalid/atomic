@@ -21,11 +21,15 @@ Route::get('/login', function () {
     return view('login');
 });
 
+
 Route::get('/signup', function () {
     return view('signup');
 });
 
+<<<<<<< HEAD
 Route::get('/search', function () {
     return view('search');
 });
 
+=======
+>>>>>>> abcc88c521408d65bbfe5f118e5b780679a68957
