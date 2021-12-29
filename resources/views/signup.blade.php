@@ -38,8 +38,8 @@
                         </div>
                     </div>
                     <div class="bottom text-center mb-5">
-                        <p href="#" class="sm-text mx-auto mb-3">Already have an account ?<button
-                                class="btn btn-white ml-2">Login Now</button></p>
+                        <a href="login" class="sm-text mx-auto mb-3">Already have an account ?<button
+                                class="btn btn-white ml-2">Login Now</button></a>
                     </div>
                 </div>
                 <div class="card card2">

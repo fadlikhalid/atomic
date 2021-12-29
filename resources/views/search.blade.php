@@ -135,12 +135,12 @@
                             <!-- Start Author Content -->
                             <div class="mu-author-content">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-2">
                                         <div class="mu-author-image">
                                             <img src="https://media.harrypotterfanzone.com/deathly-hallows-us-childrens-edition.jpg" alt="Author Image" class="imgcover">
                                         </div>
                                     </div>
-                                    <div class="col-md-8">
+                                    <div class="col-md-10">
                                         <div class="mu-author-info">
                                             <h3>John Doe</h3>
                                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo suscipit
