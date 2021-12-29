@@ -32,13 +32,13 @@
                             </div>
                             <div class="row justify-content-center my-3 px-3"> <button class="btn-block btn-color">Login
                                     to BookHub</button> </div>
-                            <div class="row justify-content-center my-2"> <a href="#"><small class="text-muted">Forgot
+                            <div class="row justify-content-center my-2"> <a href="forgetpass"><small class="text-muted">Forgot
                                         Password?</small></a> </div>
                         </div>
                     </div>
                     <div class="bottom text-center mb-5">
-                        <p href="#" class="sm-text mx-auto mb-3">Don't have an account?<button
-                                class="btn btn-white ml-2">Create new</button></p>
+                        <a href="signup" class="sm-text mx-auto mb-3">Don't have an account?<button
+                                class="btn btn-white ml-2">Create new</button></a>
                     </div>
                 </div>
                 <div class="card card2">

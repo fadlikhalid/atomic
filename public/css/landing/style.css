@@ -587,19 +587,20 @@ button:focus {
 	display: inline;
 	float: left;
 	width: 100%;
+	padding-top: 70px;
 }
 
 .mu-author-area {
 	display: inline;
 	float: left;
-	padding: 100px 0;
+	padding: 0 0;
 	width: 100%;
 }
 
 .mu-author-content{
 	display: inline;
 	float: left;
-	margin-top: 0px;
+	margin-top: -60px;
 	width: 100%;
 }
 
@@ -612,8 +613,12 @@ button:focus {
 .mu-author-info {
 	display: inline;
 	float: left;
-	margin-top: 20px;
+	margin-top: 80px;
 	width: 100%;
+}
+
+.mu-author-info ul li{
+	margin-left: 20px;
 }
 
 .mu-author-info h3 {
@@ -1181,6 +1186,7 @@ button:focus {
 	
 	.mu-heading-area {
 		padding: 0;
+		
 	}
 
 	.mu-video-iframe {
@@ -1336,4 +1342,8 @@ button:focus {
 	object-fit:contain;
   	width: 676px;
  	height: 400px;
+}
+
+.padgap{
+	padding: 200px;
 }

@@ -26,10 +26,42 @@ Route::get('/signup', function () {
     return view('signup');
 });
 
+Route::get('/forgetpass', function () {
+    return view('forgetpass');
+});
+
 
 Route::get('/search', function () {
     return view('search');
 });
 
+Route::get('/mybook', function () {
+    return view('mybook');
+});
+
+
+Route::get('/history', function () {
+    return view('history');
+});
+
+Route::get('/adminlogin', function () {
+    return view('admin/adminlogin');
+});
+
+Route::get('/dashboard', function () {
+    return view('admin/dashboard');
+});
+
+Route::get('/editbook', function () {
+    return view('admin/editbook');
+});
+
+Route::get('/managebook', function () {
+    return view('admin/managebook');
+});
+
+Route::get('/profile', function () {
+    return view('admin/profile');
+});
 
 ?>
