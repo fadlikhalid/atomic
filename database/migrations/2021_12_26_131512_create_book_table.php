@@ -17,8 +17,8 @@ class CreateBookTable extends Migration
             $table->id('book_id');
             $table->timestamps();
             $table->string('book_name');
-            $table->binary('book_file');
-            $table->binary('book_cover');
+            $table->string('book_file');
+            $table->string('book_cover');
             $table->string('genre');
             $table->string('author');
             $table->string('book_desc');         
