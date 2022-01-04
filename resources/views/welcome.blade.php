@@ -1,38 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>BookHub</title>
-    <!-- Favicon -->
-    <link rel="shortcut icon" type="image/icon" href="/css/landing/images/favicon.ico"/>
-    <!-- Font Awesome -->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-    <!-- Bootstrap -->
-    <link href="/css/landing/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Slick slider -->
-    <link href="/css/landing/css/slick.css" rel="stylesheet">
-    <!-- Theme color -->
-    <link id="switcher" href="/css/landing/css/theme-color/default-theme.css" rel="stylesheet">
 
-    <!-- Main Style -->
-    <link href="/css/landing/style.css" rel="stylesheet">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<title>BookHub</title>
+	<!-- Favicon -->
+	<link rel="shortcut icon" type="image/icon" href="/css/landing/images/favicon.ico" />
+	<!-- Font Awesome -->
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+	<!-- Bootstrap -->
+	<link href="/css/landing/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Slick slider -->
+	<link href="/css/landing/css/slick.css" rel="stylesheet">
+	<!-- Theme color -->
+	<link id="switcher" href="/css/landing/css/theme-color/default-theme.css" rel="stylesheet">
 
-    <!-- Fonts -->
-    <!-- Open Sans for body font -->
+	<!-- Main Style -->
+	<link href="/css/landing/style.css" rel="stylesheet">
+
+	<!-- Fonts -->
+	<!-- Open Sans for body font -->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700,800" rel="stylesheet">
-    <!-- Lato for Title -->
-  	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"> 
+	<!-- Lato for Title -->
+	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 
-  </head>
+</head>
 
-  <body>
+<body>
 
-   	
-  	<!-- Insert Header -->
-      @include('includes.header')
+
+	<!-- Insert Header -->
+	@include('includes.header')
 
 	<!-- Start Featured Slider -->
 
@@ -53,16 +54,16 @@
 						<!-- Masukin a href buat subs page --><a href="" class="mu-primary-btn">Subscribe now</a>
 						<span>*Avaliable for 3 Package.</span>
 					</div>
-				</div>	
+				</div>
 
 			</div>
 		</div>
 	</section>
-	
+
 	<!-- Start Featured Slider -->
-	
+
 	<!-- Start main content -->
-		
+
 	<main role="main">
 
 		<!-- Start Counter -->
@@ -133,54 +134,21 @@
 							<div class="mu-book-overview-content">
 								<div class="row">
 
-									<!-- Book Overview Single Content -->
-									<div class="col-md-3 col-sm-6">
-										<div class="mu-book-overview-single">
+									<!-- Book Overview Single Content -->									
+									@foreach($books->slice(0, 4) as $book)										
+									<div class="col-md-3 col-sm-6">									
+										<div class="mu-book-overview-single">											
 											<span class="mu-book-overview-icon-box">
-												<img src="https://www.kibrispdr.org/data/one-piece-logo-png-0.jpg"></img>
+												<img src="/book/cover/{{ $book->book_cover }}" alt="Author Image" class="imgcover"></img>
 											</span>
-											<h4>One Piece</h4>
-											<p>Author : Eiichiro Oda</p>
-											<p>Genre : Action</p>
-										</div>
+											<h4>{{$book->book_name}}</h4>
+											<p>Author : {{$book->author}}</p>
+											<p>Genre : {{$book->genre}}</p>
+										</div>										
 									</div>
-									<!-- / Book Overview Single Content -->
-
-									<!-- About Us Single Content -->
-									<div class="col-md-3 col-sm-6">
-										<div class="mu-book-overview-single">
-											<span class="mu-book-overview-icon-box">
-												<i class="fa fa-cubes" aria-hidden="true"></i>
-											</span>
-											<h4>Chapter Two</h4>
-											<p>Lorem ipsum dolor sit amet, consect adipis elit minim veniam ettis inkeras.</p>
-										</div>
-									</div>
-									<!-- / Book Overview Single Content -->
-
-									<!-- About Us Single Content -->
-									<div class="col-md-3 col-sm-6">
-										<div class="mu-book-overview-single">
-											<span class="mu-book-overview-icon-box">
-												<i class="fa fa-modx" aria-hidden="true"></i>
-											</span>
-											<h4>Chapter Three</h4>
-											<p>Lorem ipsum dolor sit amet, consect adipis elit minim veniam ettis inkeras.</p>
-										</div>
-									</div>
-									<!-- / Book Overview Single Content -->
-
-									<!-- About Us Single Content -->
-									<div class="col-md-3 col-sm-6">
-										<div class="mu-book-overview-single">
-											<span class="mu-book-overview-icon-box">
-												<i class="fa fa-files-o" aria-hidden="true"></i>
-											</span>
-											<h4>Chapter Four</h4>
-											<p>Lorem ipsum dolor sit amet, consect adipis elit minim veniam ettis inkeras.</p>
-										</div>
-									</div>
-									<!-- / Book Overview Single Content -->
+									@endforeach									
+									<!-- End of Book Overview Single Content -->
+									
 								</div>
 							</div>
 							<!-- End Book Overview Content -->
@@ -192,7 +160,7 @@
 		</section>
 		<!-- End Book Overview -->
 
-		
+
 
 		<!-- Start Video Review -->
 		<section id="mu-video-review">
@@ -209,8 +177,14 @@
 
 							<!-- Start Video Review Content -->
 							<div class="mu-video-review-content">
-								<iframe class="mu-video-iframe" width="100%" height="480" src="https://www.youtube.com/embed/T4ySAlBt2Ug" frameborder="0" allowfullscreen></iframe>
-							</div>
+							<div class="mu-book-overview-single">											
+											<span class="mu-book-overview-icon-box">
+												<img src="/book/cover/{{ $book->book_cover }}" alt="Author Image" class="imgcover"></img>
+											</span>
+											<h4>{{$book->book_name }}</h4>
+											<p>Author : {{$book->author}}</p>
+											<p>Genre : {{$book->genre}}</p>
+										</div>	</div>
 							<!-- End Video Review Content -->
 
 						</div>
@@ -223,32 +197,33 @@
 
 
 	</main>
-	
-	<!-- End main content -->	
-			
-			
-	<!-- insert footer -->
-    @include('includes.footer')	
 
-	
-	
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <!-- Bootstrap -->
-    <script src="/css/landing/js/bootstrap.min.js"></script>
+	<!-- End main content -->
+
+
+	<!-- insert footer -->
+	@include('includes.footer')
+
+
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<!-- Bootstrap -->
+	<script src="/css/landing/js/bootstrap.min.js"></script>
 	<!-- Slick slider -->
-    <script type="text/javascript" src="/css/landing/js/slick.min.js"></script>
-    <!-- Counter js -->
-    <script type="text/javascript" src="/css/landing/js/counter.js"></script>
-    <!-- Ajax contact form  -->
-    <script type="text/javascript" src="/css/landing/js/app.js"></script>
-   
- 
-	
-    <!-- Custom js -->
+	<script type="text/javascript" src="/css/landing/js/slick.min.js"></script>
+	<!-- Counter js -->
+	<script type="text/javascript" src="/css/landing/js/counter.js"></script>
+	<!-- Ajax contact form  -->
+	<script type="text/javascript" src="/css/landing/js/app.js"></script>
+
+
+
+	<!-- Custom js -->
 	<script type="text/javascript" src="/css/landing/js/custom.js"></script>
-	
-    
-  </body>
+
+
+</body>
+
 </html>
