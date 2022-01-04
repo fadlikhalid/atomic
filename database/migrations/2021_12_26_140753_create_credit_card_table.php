@@ -14,7 +14,7 @@ class CreateCreditCardTable extends Migration
     public function up()
     {
         Schema::create('credit_card', function (Blueprint $table) {
-            $table->id('credit_card_ID');
+            $table->id();
             $table->timestamps();
         });
     }
