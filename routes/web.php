@@ -31,9 +31,7 @@ Route::get('/forgetpass', function () {
 });
 
 
-Route::get('/search', function () {
-    return view('search');
-});
+Route::get('/search', 'BookController@search')->name('book.search');
 
 Route::get('/mybook', function () {
     return view('mybook');

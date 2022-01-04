@@ -13,5 +13,12 @@ class BookController extends Controller
 
         return view('books', ['books' => $books]);
     }
+
+    public function search(){
+
+        $books = Book::where(strtolower('book_name'),strtolower(request('bookSearch')))->orderBy('book_name')->get();
+
+        return view('search', ['books' => $books]);
+    }
     
 }
