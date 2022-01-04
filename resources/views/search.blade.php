@@ -38,27 +38,12 @@
     <!-- Start Featured Slider -->
 
     <section id="mu-hero">
-        <div class="container">
-            <div class="row">
+    <div class="mu-heading-area">
+            <form id="searchthis" action="{{route('book.search')}}" style="display:inline;" method="get">
+                <input id="namanyay-search-box" name="bookSearch" id="bookSearch" size="40" type="text" placeholder="Search Book " />
+                <input id="namanyay-search-btn" value="Search" type="submit"/>
+            </form>
 
-                <div class="col-md-6 col-sm-6 col-sm-push-6">
-                    <div class="mu-hero-right">
-                        <img src="/css/landing/images/ebook.png" alt="Ebook img">
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-sm-6 col-sm-pull-6">
-                    <div class="mu-hero-left">
-                        <h1>Perfect Landing Page Template to Present Your eBook</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam saepe, recusandae quidem
-                            nulla! Eveniet explicabo perferendis aut, ab quos omnis labore laboriosam quisquam hic
-                            deserunt ipsum maxime aspernatur velit impedit.</p>
-                        <!-- Masukin a href buat subs page --><a href="" class="mu-primary-btn">Subscribe now</a>
-                        <span>*Avaliable for 3 Package.</span>
-                    </div>
-                </div>
-
-            </div>
         </div>
     </section>
 
@@ -69,62 +54,9 @@
     <main role="main">
 
         <!-- Start Counter -->
-        <section id="mu-counter">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="mu-counter-area">
-
-                            <div class="mu-counter-block">
-                                <div class="row">
-
-                                    <!-- Start Single Counter -->
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="mu-single-counter">
-                                            <i class="fa fa-files-o" aria-hidden="true"></i>
-                                            <div class="counter-value" data-count="650">0</div>
-                                            <h5 class="mu-counter-name">Total Pages</h5>
-                                        </div>
-                                    </div>
-                                    <!-- / Single Counter -->
-
-                                    <!-- Start Single Counter -->
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="mu-single-counter">
-                                            <i class="fa fa-file-text-o" aria-hidden="true"></i>
-                                            <div class="counter-value" data-count="422">0</div>
-                                            <h5 class="mu-counter-name">Chapters</h5>
-                                        </div>
-                                    </div>
-                                    <!-- / Single Counter -->
-
-                                    <!-- Start Single Counter -->
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="mu-single-counter">
-                                            <i class="fa fa-users" aria-hidden="true"></i>
-                                            <div class="counter-value" data-count="1055">0</div>
-                                            <h5 class="mu-counter-name">Active Readers</h5>
-                                        </div>
-                                    </div>
-                                    <!-- / Single Counter -->
-
-                                </div>
-                            </div>
-
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        
         <!-- End Counter -->
-        <div class="mu-heading-area">
-            <form id="searchthis" action="/search" style="display:inline;" method="get">
-                <input id="namanyay-search-box" name="q" size="40" type="text" placeholder="Search Book " />
-                <input id="namanyay-search-btn" value="Search" type="submit" />
-            </form>
-
-        </div>
+        
 
         <!-- Start Author -->
         <section id="mu-author">
@@ -133,31 +65,30 @@
                     <div class="col-md-12">
                         <div class="mu-author-area">
                             <!-- Start Author Content -->
+
+                            @foreach($books as $book)
+
                             <div class="mu-author-content">
                                 <div class="row">
                                     <div class="col-md-2">
                                         <div class="mu-author-image">
-                                            <img src="https://media.harrypotterfanzone.com/deathly-hallows-us-childrens-edition.jpg" alt="Author Image" class="imgcover">
+                                            <img src="/book/cover/{{ $book->book_cover }}" alt="Author Image" class="imgcover">
                                         </div>
                                     </div>
                                     <div class="col-md-10">
                                         <div class="mu-author-info">
-                                            <h3>John Doe</h3>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo suscipit
-                                                facilis ipsum ullam reiciendis odio error iste neque ratione libero rem
-                                                accusamus voluptatibus, nihil unde maiores sunt nisi. Assumenda,
-                                                consectetur.</p>
+                                            <h3>{{$book->book_name}}</h3>
+                                            <p>{{$book->genre}}</p>
 
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate,
-                                                dolorem error neque! Dolores similique ut iusto odit esse ipsam,
-                                                nesciunt pariatur animi minima maiores mollitia cupiditate ad ipsum
-                                                deleniti perspiciatis!</p>
+                                            <p>{{$book->book_desc}}</p>
                                             
 
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
+                            @endforeach
                             <!-- End Author Content -->
 
                         </div>
