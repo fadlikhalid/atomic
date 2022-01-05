@@ -11,7 +11,7 @@ class BookController extends Controller
 
         $books = Book::all();
 
-        return view('books', ['books' => $books]);
+        return view('welcome', ['books' => $books]);
     }
 
     public function search(){
