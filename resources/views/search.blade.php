@@ -40,8 +40,8 @@
     <section id="mu-hero">
     <div class="mu-heading-area">
             <form id="searchthis" action="{{route('book.search')}}" style="display:inline;" method="get">
-                <input id="namanyay-search-box" name="bookSearch" id="bookSearch" size="40" type="text" placeholder="Search Book " />
-                <input id="namanyay-search-btn" value="Search" type="submit"/>
+                <input id="namanyay-search-box" name="bookSearch" id="bookSearch" size="40" type="text" placeholder="Search Book " style="border: 1px solid white;" />
+                <input id="namanyay-search-btn" value="Search" type="submit" style="border: 1px solid white;"/>
             </form>
 
         </div>
