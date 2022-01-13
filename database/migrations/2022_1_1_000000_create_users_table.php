@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->integer('sub_days')->nullable();
-            $table->bigInteger('credit_card_ID')->unsigned();
+            $table->bigInteger('credit_card_ID')->nullable()->unsigned();
             $table->foreign('credit_card_ID')->references('id')->on('credit_card');
             $table->string('password');
             $table->rememberToken();
