@@ -12,6 +12,7 @@ class BookController extends Controller
         $books = Book::all();
 
         return view('welcome', ['books' => $books]);
+
     }
 
     public function index2(){
@@ -26,6 +27,7 @@ class BookController extends Controller
         $book = Book::find($id);
 
         return view('admin.editbook', ['book' => $book]);
+
     }
 
     public function search(){
