@@ -1,22 +1,20 @@
 <!DOCTYPE html>
-<html dir="ltr" lang="en">
+<html dir="ltr" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="keywords"
-        content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Ample lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Ample admin lite dashboard bootstrap 5 dashboard template">
-    <meta name="description"
-        content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
+    <meta name="keywords" content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Ample lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Ample admin lite dashboard bootstrap 5 dashboard template">
+    <meta name="description" content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
     <meta name="robots" content="noindex,nofollow">
     <title>Ample Admin Lite Template by WrapPixel</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="/css/admin/plugins/images/favicon.png">
     <!-- Custom CSS -->
-   <link href="/css/admin/css/style.min.css" rel="stylesheet">
+    <link href="/css/admin/css/style.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -32,8 +30,7 @@
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
-    <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
-        data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+    <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full" data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
         @include('includes.adminheader')
         <!-- Page wrapper  -->
         <!-- ============================================================== -->
@@ -59,31 +56,49 @@
                 <!-- ============================================================== -->
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="white-box">
-                            <div class="form-group"> <label class="form-control-label text-muted">Username</label>
-                                <input type="text" id="" name="" placeholder="Harry Potter"
-                                    class="form-control">
-                            </div>
-                            <div class="form-group"> <label class="form-control-label text-muted">Author</label>
-                                <input type="text" id="" name="" placeholder="J.K. Rowling"
-                                    class="form-control">
-                            </div>
-                            <div class="form-group"> <label class="form-control-label text-muted">Publish Date</label>
-                                <input type="text" id="" name="" placeholder="June 26, 1997"
-                                    class="form-control">
-                            </div>
-                            <div class="form-group"> <label class="form-control-label text-muted">Total Page</label>
-                                <input type="number" id="" name="" placeholder="240"
-                                    class="form-control">
-                            </div>
+                <form action="{{route('admin.book.save', $book->book_id)}}" style="display:inline;" method="POST">
+                @csrf
+                @method('PUT')
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="white-box">
+                                <div class="form-group"> <label class="form-control-label text-muted">Username</label>
+                                    <input type="text" id="bname" name="bname" placeholder="{{$book->book_name}}" class="form-control">
+                                </div>
+                                <div class="form-group"> <label class="form-control-label text-muted">Author</label>
+                                    <input type="text" id="bauthor" name="bauthor" placeholder="{{$book->author}}" class="form-control">
+                                </div>
+                                <div class="form-group"> <label class="form-control-label text-muted">Book cover</label>
+                                    <input type="file" id="bcover" name="bcover" placeholder="{{$book->book_cover}}" class="form-control">
+                                </div>
+                                <div class="form-group"> <label class="form-control-label text-muted">Book file</label>
+                                    <input type="file" id="bfile" name="bfile" placeholder="{{$book->book_file}}" class="form-control">
+                                </div>
+                                <div class="form-group"> <label class="form-control-label text-muted">Genre</label>
+                                    <input type="text" id="bgenre" name="bgenre" placeholder="{{$book->genre}}" class="form-control">
+                                </div>
+                                <div class="form-group"> <label class="form-control-label text-muted">Genre</label>
+                                    <textarea id="bdesc" name="bdesc" placeholder="{{$book->book_desc}}" class="form-control"></textarea>
+                                </div>
 
-                            <div class="btn btn-outline-primary text-center">Save</div>
-                            <a href="managebook.html"><div class="btn btn-outline-primary text-center">Discard</div></a>
+                                <div class="form-group"> <label class="form-control-label text-muted">Publish Date</label>
+                                    <input type="date" id="bpdate" name="bpdate" placeholder="{{$book->published}}" class="form-control">
+                                </div>
+                                <div class="form-group"> <label class="form-control-label text-muted">Total Page</label>
+                                    <input type="number" id="btpage" name="btpage" placeholder="{{$book->total_page}}" class="form-control">
+                                </div>
+
+                                <input type="submit" name="editBook" value="Save" class="btn btn-outline-primary text-center"></input>
+                                <a href="#">
+                                    <div class="btn btn-outline-primary text-center">Delete</div>
+                                </a>
+                                <a href="{{route('admin.book.manage')}}">
+                                    <div class="btn btn-outline-primary text-center">Back</div>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </form>
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->
@@ -101,8 +116,7 @@
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
-            <footer class="footer text-center"> 2021 © Ample Admin brought to you by <a
-                    href="https://www.wrappixel.com/">wrappixel.com</a>
+            <footer class="footer text-center"> 2021 © Ample Admin brought to you by <a href="https://www.wrappixel.com/">wrappixel.com</a>
             </footer>
             <!-- ============================================================== -->
             <!-- End footer -->

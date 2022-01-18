@@ -21,6 +21,8 @@ class CreateBookTable extends Migration
             $table->string('book_cover');
             $table->string('genre');
             $table->string('author');
+            $table->date('published');
+            $table->integer('total_page');
             $table->string('book_desc');         
         });
     }

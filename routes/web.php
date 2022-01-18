@@ -54,13 +54,15 @@ Route::get('/dashboard', function () {
     return view('admin/dashboard');
 });
 
-Route::get('/editbook', function () {
-    return view('admin/editbook');
-});
+Route::get('/editbook/{id}', 'BookController@edit')->name('admin.book.edit');
 
-Route::get('/managebook', function () {
-    return view('admin/managebook');
-});
+Route::put('/editbook/{id}', 'BookController@save')->name('admin.book.save');
+
+Route::get('/addbook',function (){return view('admin/addbook');})->name('admin.book.add');
+
+Route::post('/managebook', 'BookController@new')->name('admin.book.new');
+
+Route::get('/managebook', 'BookController@index2')->name('admin.book.manage');
 
 Route::get('/profile', function () {
     return view('admin/profile');

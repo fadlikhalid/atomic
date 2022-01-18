@@ -32,7 +32,7 @@
                             <li><a href="">Subscription</a></li>
                             <li><a href="">Genre</a></li> <!-- history -->
                             <li><a href="">Author</a></li> <!-- my book -->
-                            <li><a href="search">Search Book</a></li>
+                            <li><a href="{{ route('book.search') }}">Search Book</a></li>
                             <li><a href="login">Login</a></li>
                         </ul>
                     </div><!-- /.navbar-collapse -->
