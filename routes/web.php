@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Password;
 use Illuminate\Http\Request;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Auth0\Login\Auth0Controller;
+use App\Http\Controllers\Auth\Auth0IndexController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +38,7 @@ Route::get('/forgetpass', function () {
 });
 
 
-Route::get('/search', 'BookController@search')->name('book.search')->middleware('auth');
+Route::get('/search', 'BookController@search')->name('book.search')->middleware('verified');
 
 Route::get('/mybook', function () {
     return view('mybook');
@@ -48,65 +51,45 @@ Route::get('/history', function () {
 
 Route::get('/adminlogin', function () {
     return view('admin/adminlogin');
-});
-
-Route::get('/dashboard', function () {
-    return view('admin/dashboard');
-});
-
-Route::get('/editbook/{id}', 'BookController@edit')->name('admin.book.edit');
-
-Route::put('/editbook/{id}', 'BookController@save')->name('admin.book.save');
-
-Route::get('/addbook',function (){return view('admin/addbook');})->name('admin.book.add');
-
-Route::post('/managebook', 'BookController@new')->name('admin.book.new');
-
-Route::get('/managebook', 'BookController@index2')->name('admin.book.manage');
-
-Route::get('/profile', function () {
-    return view('admin/profile');
-});
+})->middleware('auth');
 
 
-Auth::routes();
+Auth::routes(['verify']);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+//admin routes
+
+Route::get('admin/dashboard', 'HomeController@handleAdmin')->name('admin.route')->middleware('admin');
+
+Route::get('admin/profile', 'HomeController@adminProfile')->name('admin.route')->middleware('admin');
+
+Route::get('admin/managebook', 'HomeController@manageBook')->name('admin.route')->middleware('admin');
+
+Route::get('admin/managebook', 'HomeController@editBook')->name('admin.route')->middleware('admin');
+
+//email verify routes
+
+// #1. Email verification Notice route: Give user instruction to click verification link
+Route::get('/email/verify', function () {
+    return view('auth.verify');
+})->middleware('auth')->name('verification.notice');
+
+// #2 Email Verification Handler: handle user requests generated when the user clicks the email verification link
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+
+    return redirect('/home');
+})->middleware(['auth', 'signed'])->name('verification.verify');
+
+// #2 Resending The Verification Email: resend verification email to user
+Route::post('/email/verification-notification', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+
+    return back()->with('message', 'Verification link sent!');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
 
-Route::get('/forgot-password', function () {
-    return view('auth.forgetpass');
-})->middleware('guest')->name('password.request');
-
-Route::post('/forgot-password', function (Request $request) {
-    $request->validate(['email' => 'required|email']);
-
-    $status = Password::sendResetLink(
-        $request->only('email')
-    );
-
-    return $status === Password::RESET_LINK_SENT
-                ? back()->with(['status' => __($status)])
-                : back()->withErrors(['email' => __($status)]);
-})->middleware('guest')->name('password.email');
-
-Route::post('/forgot-password', function (Request $request) {
-    $request->validate(['email' => 'required|email']);
-
-    $status = Password::sendResetLink(
-        $request->only('email')
-    );
-
-    return $status === Password::RESET_LINK_SENT
-                ? back()->with(['status' => __($status)])
-                : back()->withErrors(['email' => __($status)]);
-})->middleware('guest')->name('password.email');
-
-
-Route::get('/reset-password/{token}', function ($token) {
-    return view('auth.passwords.reset', ['token' => $token]);
-})->middleware('guest')->name('password.reset');
-
+Route::get('/auth0/callback', [Auth0Controller::class, 'callback'])->name('auth0-callback');
 
 ?>
