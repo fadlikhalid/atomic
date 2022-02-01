@@ -76,7 +76,7 @@
                                 <div class="form-group"> <label class="form-control-label text-muted">Genre</label>
                                     <input type="text" id="bgenre" name="bgenre"  class="form-control">
                                 </div>
-                                <div class="form-group"> <label class="form-control-label text-muted">Genre</label>
+                                <div class="form-group"> <label class="form-control-label text-muted">Description</label>
                                     <textarea id="bdesc" name="bdesc" class="form-control"></textarea>
                                 </div>
 
