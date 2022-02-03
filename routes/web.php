@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashboard;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Password;
@@ -22,11 +23,18 @@ use App\Http\Controllers\Auth\Auth0IndexController;
 */
 
 Route::get('/', 'BookController@index')->name('book.index');
+// Route::get('/dashboard', 'Dashboard@count')->name('dash.count');
+
+
 
 
 Route::get('/forgetpass', function () {
     return view('forgetpass');
 });
+
+Route::get('/search/{id}', 'HistoryController@display')->name('book.display')->middleware('auth');
+
+Route::get('/history', 'HistoryController@view')->name('book.history')->middleware('auth');
 
 
 Route::get('/search', 'BookController@search')->name('book.search')->middleware('auth');
@@ -36,14 +44,10 @@ Route::get('/mybook', function () {
     return view('mybook');
 });
 
-
-Route::get('/history', function () {
-    return view('history');
-});
-
 Route::get('/adminlogin', function () {
     return view('admin/adminlogin');
 })->middleware('auth');
+
 
 
 Auth::routes(['verify'=>true]);
@@ -51,10 +55,21 @@ Auth::routes(['verify'=>true]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
+
+
+
+
+
 //============================================Login/Logout routes============================================//
 Route::get('/register', function () {return view('auth.register');})->name('register');
 
 
+
+
+
+Route::get('/profile', function () {
+    return view('admin/profile');
+});
 
 
 //============================================email verify routes============================================//
@@ -85,14 +100,16 @@ Route::get('hello', 'HomeController@postVerify')->name('verify.post')->middlewar
 
 Route::get('admin/dashboard', 'HomeController@handleAdmin')->name('admin.route')->middleware('admin');
 
-Route::get('admin/profile', 'HomeController@adminProfile')->name('admin.route')->middleware('admin');
+Route::get('dashboard', [Dashboard::class, 'count']);
 
-Route::get('admin/managebook', 'HomeController@manageBook')->name('admin.book.manage')->middleware('admin');
+Route::delete('/editbook/{id}', 'BookController@delete')->name('admin.book.delete');
+Route::get('/addbook',function (){return view('admin/addbook');})->name('admin.book.add');
+Route::post('/managebook', 'BookController@new')->name('admin.book.new');
+Route::get('/managebook', 'BookController@index2')->name('admin.book.manage');
+Route::put('/editbook/{id}', 'BookController@save')->name('admin.book.save');
+Route::get('/editbook/{id}', 'BookController@edit')->name('admin.book.edit');
 
-Route::get('admin/editbook', 'HomeController@editBook')->name('admin.route')->middleware('admin');
-
-Route::get('admin/addbook', 'HomeController@addBook')->name('admin.route')->middleware('admin');
-
+Route::get('/viewUser', 'UserController@view')->name('admin.user.view');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('admin/home', 'HomeController@handleAdmin')->name('admin.route')->middleware('admin');

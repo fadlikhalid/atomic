@@ -4,14 +4,30 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Book;
+use App\Models\Credit_Card;
+use App\Models\User;
 
 class BookController extends Controller
 {
     public function index(){
 
         $books = Book::all();
+        $databooks = Book::all();
+        $countbooks = $databooks->count(); 
 
-        return view('welcome', ['books' => $books]);
+        $datauser = User::all();
+        $countuser = $datauser->count();
+        
+
+        $datacredit = Credit_Card::all();
+        $countcredit = $datacredit->count(); 
+
+        return view('welcome', [
+            'books' => $books,
+            'countbooks' => $countbooks,
+            'countuser' => $countuser,
+            'countcredit' => $countcredit,
+        ]);
 
     }
 
@@ -53,7 +69,7 @@ class BookController extends Controller
 
         $book->save();
 
-        return redirect('{{route(\'admin.book.manage\')}}');
+        return redirect()->route('admin.book.manage');
     }
 
     public function new(){
@@ -71,7 +87,14 @@ class BookController extends Controller
 
         $book->save();
 
-        return redirect('{{route(\'admin.book.manage\')}}');
+        return redirect()->route('admin.book.manage');
+    }
+
+    public function delete($id){
+        $book = Book::findOrFail($id);
+        $book->delete();
+
+        return redirect()->route('admin.book.manage');
     }
 
 }

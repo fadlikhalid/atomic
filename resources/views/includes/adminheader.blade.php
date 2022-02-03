@@ -39,14 +39,7 @@
                     <!-- ============================================================== -->
                     <ul class="navbar-nav ms-auto d-flex align-items-center">
 
-                        <!-- ============================================================== -->
-                        <!-- User profile and search -->
-                        <!-- ============================================================== -->
-                        <li>
-                            <a class="profile-pic" href="#">
-                                <img src="/css/admin/plugins/images/users/varun.jpg" alt="user-img" width="36"
-                                    class="img-circle"><span class="text-white font-medium">Steave</span></a>
-                        </li>
+                        
                         <!-- ============================================================== -->
                         <!-- Logout -->
                         <!-- ============================================================== -->
@@ -83,10 +76,10 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="profile"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('admin.user.view')}}"
                                 aria-expanded="false">
                                 <i class="fa fa-user" aria-hidden="true"></i>
-                                <span class="hide-menu">Profile</span>
+                                <span class="hide-menu">User</span>
                             </a>
                         </li>
                         <li class="sidebar-item">

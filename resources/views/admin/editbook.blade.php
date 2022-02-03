@@ -57,48 +57,51 @@
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
                 <form action="{{route('admin.book.save', $book->book_id)}}" style="display:inline;" method="POST">
-                @csrf
-                @method('PUT')
+                    @csrf
+                    @method('PUT')
                     <div class="row">
                         <div class="col-md-12">
                             <div class="white-box">
                                 <div class="form-group"> <label class="form-control-label text-muted">Username</label>
-                                    <input type="text" id="bname" name="bname" placeholder="{{$book->book_name}}" class="form-control">
+                                    <input type="text" id="bname" name="bname" value="{{$book->book_name}}" class="form-control">
                                 </div>
                                 <div class="form-group"> <label class="form-control-label text-muted">Author</label>
-                                    <input type="text" id="bauthor" name="bauthor" placeholder="{{$book->author}}" class="form-control">
+                                    <input type="text" id="bauthor" name="bauthor" value="{{$book->author}}" class="form-control">
                                 </div>
                                 <div class="form-group"> <label class="form-control-label text-muted">Book cover</label>
-                                    <input type="file" id="bcover" name="bcover" placeholder="{{$book->book_cover}}" class="form-control">
+                                    <input type="file" id="bcover" name="bcover" value="{{$book->book_cover}}" class="form-control">
                                 </div>
                                 <div class="form-group"> <label class="form-control-label text-muted">Book file</label>
-                                    <input type="file" id="bfile" name="bfile" placeholder="{{$book->book_file}}" class="form-control">
+                                    <input type="file" id="bfile" name="bfile" value="{{$book->book_file}}" class="form-control">
                                 </div>
                                 <div class="form-group"> <label class="form-control-label text-muted">Genre</label>
-                                    <input type="text" id="bgenre" name="bgenre" placeholder="{{$book->genre}}" class="form-control">
+                                    <input type="text" id="bgenre" name="bgenre" value="{{$book->genre}}" class="form-control">
                                 </div>
-                                <div class="form-group"> <label class="form-control-label text-muted">Genre</label>
-                                    <textarea id="bdesc" name="bdesc" placeholder="{{$book->book_desc}}" class="form-control"></textarea>
+                                <div class="form-group"> <label class="form-control-label text-muted">Description</label>
+                                    <textarea id="bdesc" name="bdesc" value="{{$book->book_desc}}" class="form-control"></textarea>
                                 </div>
 
                                 <div class="form-group"> <label class="form-control-label text-muted">Publish Date</label>
-                                    <input type="date" id="bpdate" name="bpdate" placeholder="{{$book->published}}" class="form-control">
+                                    <input type="date" id="bpdate" name="bpdate" value="{{$book->published}}" class="form-control">
                                 </div>
                                 <div class="form-group"> <label class="form-control-label text-muted">Total Page</label>
-                                    <input type="number" id="btpage" name="btpage" placeholder="{{$book->total_page}}" class="form-control">
+                                    <input type="number" id="btpage" name="btpage" value="{{$book->total_page}}" class="form-control">
                                 </div>
 
                                 <input type="submit" name="editBook" value="Save" class="btn btn-outline-primary text-center"></input>
-                                <a href="#">
-                                    <div class="btn btn-outline-primary text-center">Delete</div>
-                                </a>
-                                <a href="{{route('admin.book.manage')}}">
-                                    <div class="btn btn-outline-primary text-center">Back</div>
-                                </a>
+
                             </div>
                         </div>
                     </div>
                 </form>
+                <form action="{{route('admin.book.delete', $book->book_id)}}" style="display:inline;" method="POST">
+                    @csrf 
+                    @method('DELETE')
+                    <input type="submit" name="editBook" value="Delete" class="btn btn-outline-primary text-center"></input>
+                </form>
+                <a href="{{route('admin.book.manage')}}">
+                    <div class="btn btn-outline-primary text-center">Back</div>
+                </a>
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->
@@ -116,8 +119,8 @@
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
-            <footer class="footer text-center"> 2021 © Ample Admin brought to you by <a href="https://www.wrappixel.com/">wrappixel.com</a>
-            </footer>
+            <footer class="footer text-center"> 2021 © BookHub brought to you by
+                </footer>
             <!-- ============================================================== -->
             <!-- End footer -->
             <!-- ============================================================== -->
