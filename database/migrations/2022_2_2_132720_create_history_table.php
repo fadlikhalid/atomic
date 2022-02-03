@@ -15,10 +15,12 @@ class CreateHistoryTable extends Migration
     {
         Schema::create('history', function (Blueprint $table) {
 
-            $table->string('book_name');
-            $table->integer('book_page');
-            //$table->foreign('email')->constrained('users');
-            $table->timestamp('last_read_at')->nullable();
+            $table->id();
+            $table->bigInteger('user_id')->nullable()->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->bigInteger('book_id')->nullable()->unsigned();
+            $table->foreign('book_id')->references('book_id')->on('books')->onDelete('cascade');
+            $table->timestamps();
         });
     }
 

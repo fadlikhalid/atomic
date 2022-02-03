@@ -31,7 +31,7 @@
                             <li><a href="/">Home</a></li>
                             <li><a href="">Subscription</a></li>
                             <li><a href="">Genre</a></li> <!-- history -->
-                            <li><a href="">Author</a></li> <!-- my book -->
+                            <li><a href="{{ route('book.history') }}">History</a></li>
                             <li><a href="{{ route('book.search') }}">Search Book</a></li>
                             <li><a href="login">Login</a></li>
                         </ul>
