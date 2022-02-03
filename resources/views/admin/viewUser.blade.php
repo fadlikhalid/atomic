@@ -70,6 +70,7 @@
                                         <tr>
                                             <th class="border-top-0">#</th>
                                             <th class="border-top-0">User Name</th>
+                                            <th class="border-top-0">User ID</th>
                                             <th class="border-top-0">Email</th>
                                             <th class="border-top-0">Subscription days left</th>
                                         </tr>
@@ -77,8 +78,9 @@
                                     <tbody>
                                    @foreach($users as $user)
                                         <tr>
-                                            <td>{{$user->id}}</td>
+                                            <td>{{$loop->index+1}}</td>
                                             <td>{{$user->name}}</td>
+                                            <td>{{$user->id}}</td>
                                             <td>{{$user->email}}</td>
                                             <td>{{$user->sub_days}}</td>
                                         </tr>
@@ -106,9 +108,8 @@
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
-            <footer class="footer text-center"> 2021 © Ample Admin brought to you by <a
-                    href="https://www.wrappixel.com/">wrappixel.com</a>
-            </footer>
+            <footer class="footer text-center"> 2021 © BookHub brought to you by
+                </footer>
             <!-- ============================================================== -->
             <!-- End footer -->
             <!-- ============================================================== -->
