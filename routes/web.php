@@ -59,7 +59,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 
-
 //============================================Login/Logout routes============================================//
 Route::get('/register', function () {return view('auth.register');})->name('register');
 
@@ -98,9 +97,9 @@ Route::get('hello', 'HomeController@postVerify')->name('verify.post')->middlewar
 
 //============================================admin routes============================================//
 
-Route::get('admin/dashboard', 'HomeController@handleAdmin')->name('admin.route')->middleware('admin');
+Route::get('admin/dashboard', 'HomeController@count')->name('admin.route')->middleware('admin');
 
-Route::get('dashboard', [Dashboard::class, 'count']);
+// Route::get('dashboard', [Dashboard::class, 'count']);
 
 Route::delete('/editbook/{id}', 'BookController@delete')->name('admin.book.delete');
 Route::get('/addbook',function (){return view('admin/addbook');})->name('admin.book.add');
@@ -112,7 +111,7 @@ Route::get('/editbook/{id}', 'BookController@edit')->name('admin.book.edit');
 Route::get('/viewUser', 'UserController@view')->name('admin.user.view');
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('admin/home', 'HomeController@handleAdmin')->name('admin.route')->middleware('admin');
+// Route::get('admin/home', 'HomeController@handleAdmin')->name('admin.route')->middleware('admin');
 
 
 

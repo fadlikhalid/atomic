@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Book;
+use App\Models\Credit_Card;
+use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -26,36 +29,39 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function handleAdmin()
-    {
-        return view('admin/dashboard');
-    } 
-    
-    public function adminProfile()
-    {
-        return view('admin/profile');
-    } 
-    
-    public function manageBook()
-    {
-        return view('admin/managebook');
-    } 
-
-    public function editBook()
-    {
-        return view('admin/editbook');
-    } 
-
-    public function addBook()
-    {
-        return view('admin/addbook');
-    } 
-
+        
     public function postVerify(){
         if (auth()->user()->is_admin == 1) {
             return redirect()->route('admin.route');
         }else{
             return redirect()->route('book.index');
         }
+    }
+
+    public function count(){
+        // $data = DB::table('Book')->count();
+        $databooks = Book::all();
+        $countbooks = $databooks->count(); 
+
+        $datauser = User::all();
+        $countuser = $datauser->count();
+        
+
+        $datacredit = Credit_Card::all();
+        $countcredit = $datacredit->count(); 
+        // return view('dashboard', compact('data'));
+        // return View::make('dashboard')->with('data', $data);
+
+        $latestbook = Book::latest()->first();
+        $latestuser = User::latest()->first();
+        
+
+        return view('/admin/dashboard',[
+            'countbooks' => $countbooks,
+            'countuser' => $countuser,
+            'countcredit' => $countcredit,
+            'latestbook' => $latestbook,
+            'latestuser' => $latestuser,
+        ]);
     }
 }
