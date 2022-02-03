@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashboard;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Password;
@@ -19,6 +20,9 @@ use Illuminate\Support\Facades\Hash;
 */
 
 Route::get('/', 'BookController@index')->name('book.index');
+// Route::get('/dashboard', 'Dashboard@count')->name('dash.count');
+
+Route::get('dashboard', [Dashboard::class, 'count']);
 
 
 Route::get('/login', function () {
@@ -49,9 +53,9 @@ Route::get('/adminlogin', function () {
     return view('admin/adminlogin');
 });
 
-Route::get('/dashboard', function () {
-    return view('admin/dashboard');
-});
+// Route::get('/dashboard', function () {
+//     return view('admin/dashboard');
+// });
 
 Route::get('/editbook/{id}', 'BookController@edit')->name('admin.book.edit');
 
