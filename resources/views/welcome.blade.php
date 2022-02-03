@@ -80,8 +80,8 @@
 									<div class="col-md-4 col-sm-6">
 										<div class="mu-single-counter">
 											<i class="fa fa-files-o" aria-hidden="true"></i>
-											<div class="counter-value" data-count="650">0</div>
-											<h5 class="mu-counter-name">Total Pages</h5>
+											<div class="counter-value" data-count="{{$countbooks}}">0</div>
+											<h5 class="mu-counter-name">Total Books</h5>
 										</div>
 									</div>
 									<!-- / Single Counter -->
@@ -90,8 +90,8 @@
 									<div class="col-md-4 col-sm-6">
 										<div class="mu-single-counter">
 											<i class="fa fa-file-text-o" aria-hidden="true"></i>
-											<div class="counter-value" data-count="422">0</div>
-											<h5 class="mu-counter-name">Chapters</h5>
+											<div class="counter-value" data-count="{{$countuser}}">0</div>
+											<h5 class="mu-counter-name">Total User</h5>
 										</div>
 									</div>
 									<!-- / Single Counter -->
@@ -100,8 +100,8 @@
 									<div class="col-md-4 col-sm-6">
 										<div class="mu-single-counter">
 											<i class="fa fa-users" aria-hidden="true"></i>
-											<div class="counter-value" data-count="1055">0</div>
-											<h5 class="mu-counter-name">Active Readers</h5>
+											<div class="counter-value" data-count="{{$countcredit}}">0</div>
+											<h5 class="mu-counter-name">Total User Subscription</h5>
 										</div>
 									</div>
 									<!-- / Single Counter -->
@@ -134,21 +134,23 @@
 							<div class="mu-book-overview-content">
 								<div class="row">
 
-									<!-- Book Overview Single Content -->									
-									@foreach($books->slice(0, 4) as $book)										
-									<div class="col-md-3 col-sm-6">									
-										<div class="mu-book-overview-single">											
-											<span class="mu-book-overview-icon-box">
-												<img src="/book/cover/{{ $book->book_cover }}" alt="Author Image" class="imgcover"></img>
-											</span>
-											<h4>{{$book->book_name}}</h4>
-											<p>Author : {{$book->author}}</p>
-											<p>Genre : {{$book->genre}}</p>
-										</div>										
-									</div>
-									@endforeach									
+									<!-- Book Overview Single Content -->
+									@foreach($books->slice(0, 4) as $book)
+									<a href="{{route('book.display', $book->book_id)}}">
+										<div class="col-md-3 col-sm-6">
+											<div class="mu-book-overview-single">
+												<span class="mu-book-overview-icon-box">
+													<img src="/book/cover/{{ $book->book_cover }}" alt="Author Image" class="imgcover"></img>
+												</span>
+												<h4>{{$book->book_name}}</h4>
+												<p>Author : {{$book->author}}</p>
+												<p>Genre : {{$book->genre}}</p>
+											</div>
+										</div>
+									</a>
+									@endforeach
 									<!-- End of Book Overview Single Content -->
-									
+
 								</div>
 							</div>
 							<!-- End Book Overview Content -->
@@ -176,8 +178,7 @@
 							</div>
 
 							<!-- Start Video Review Content -->
-							<
-							<!-- End Video Review Content -->
+							< <!-- End Video Review Content -->
 
 						</div>
 					</div>
