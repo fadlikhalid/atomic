@@ -53,7 +53,7 @@ class BookController extends Controller
 
         $book->save();
 
-        return redirect('{{route(\'admin.book.manage\')}}');
+        return redirect()->route('admin.book.manage');
     }
 
     public function new(){
@@ -71,7 +71,14 @@ class BookController extends Controller
 
         $book->save();
 
-        return redirect('{{route(\'admin.book.manage\')}}');
+        return redirect()->route('admin.book.manage');
+    }
+
+    public function delete($id){
+        $book = Book::findOrFail($id);
+        $book->delete();
+
+        return redirect()->route('admin.book.manage');
     }
 
 }

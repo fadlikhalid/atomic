@@ -34,16 +34,15 @@ Route::get('/forgetpass', function () {
     return view('forgetpass');
 });
 
+Route::get('/search/{id}', 'HistoryController@display')->name('book.display')->middleware('auth');
+
+Route::get('/history', 'HistoryController@view')->name('book.history')->middleware('auth');
+
 
 Route::get('/search', 'BookController@search')->name('book.search')->middleware('auth');
 
 Route::get('/mybook', function () {
     return view('mybook');
-});
-
-
-Route::get('/history', function () {
-    return view('history');
 });
 
 Route::get('/adminlogin', function () {
@@ -58,11 +57,15 @@ Route::get('/editbook/{id}', 'BookController@edit')->name('admin.book.edit');
 
 Route::put('/editbook/{id}', 'BookController@save')->name('admin.book.save');
 
+Route::delete('/editbook/{id}', 'BookController@delete')->name('admin.book.delete');
+
 Route::get('/addbook',function (){return view('admin/addbook');})->name('admin.book.add');
 
 Route::post('/managebook', 'BookController@new')->name('admin.book.new');
 
 Route::get('/managebook', 'BookController@index2')->name('admin.book.manage');
+
+Route::get('/viewUser', 'UserController@view')->name('admin.user.view');
 
 Route::get('/profile', function () {
     return view('admin/profile');
@@ -110,6 +113,3 @@ Route::get('/reset-password/{token}', function ($token) {
 
 
 ?>
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
