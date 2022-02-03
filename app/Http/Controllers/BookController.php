@@ -22,11 +22,14 @@ class BookController extends Controller
         $datacredit = Credit_Card::all();
         $countcredit = $datacredit->count(); 
 
+        $latestbook = Book::latest()->first();
+
         return view('welcome', [
             'books' => $books,
             'countbooks' => $countbooks,
             'countuser' => $countuser,
             'countcredit' => $countcredit,
+            'latestbook' => $latestbook,
         ]);
 
     }
