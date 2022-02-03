@@ -84,12 +84,14 @@
                                     {{ __('Create Account') }}
                                 </button>                            
                         </div>
+
+                        <input type="hidden" name="is_admin" value="0">
                     </form>
                             
                         </div>
                     </div>
                     <div class="bottom text-center mb-5">
-                        <a href="login.blade.php" class="sm-text mx-auto mb-3">Already have an account ?<button
+                        <a href="{{ route('login') }}" class="sm-text mx-auto mb-3">Already have an account ?<button
                                 class="btn btn-white ml-2">Login Now</button></a>
                     </div>
                 </div>

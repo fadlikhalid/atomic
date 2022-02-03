@@ -24,21 +24,13 @@ use App\Http\Controllers\Auth\Auth0IndexController;
 Route::get('/', 'BookController@index')->name('book.index');
 
 
-Route::get('/login', function () {
-    return view('login');
-});
-
-
-Route::get('/signup', function () {
-    return view('signup');
-});
-
 Route::get('/forgetpass', function () {
     return view('forgetpass');
 });
 
 
-Route::get('/search', 'BookController@search')->name('book.search')->middleware('verified');
+Route::get('/search', 'BookController@search')->name('book.search')->middleware('auth');
+//Route::get('/search', 'BookController@search')->name('book.search')->middleware(['auth','verified']);
 
 Route::get('/mybook', function () {
     return view('mybook');
@@ -54,21 +46,18 @@ Route::get('/adminlogin', function () {
 })->middleware('auth');
 
 
-Auth::routes(['verify']);
+Auth::routes(['verify'=>true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-//admin routes
 
-Route::get('admin/dashboard', 'HomeController@handleAdmin')->name('admin.route')->middleware('admin');
+//============================================Login/Logout routes============================================//
+Route::get('/register', function () {return view('auth.register');})->name('register');
 
-Route::get('admin/profile', 'HomeController@adminProfile')->name('admin.route')->middleware('admin');
 
-Route::get('admin/managebook', 'HomeController@manageBook')->name('admin.route')->middleware('admin');
 
-Route::get('admin/managebook', 'HomeController@editBook')->name('admin.route')->middleware('admin');
 
-//email verify routes
+//============================================email verify routes============================================//
 
 // #1. Email verification Notice route: Give user instruction to click verification link
 Route::get('/email/verify', function () {
@@ -90,6 +79,28 @@ Route::post('/email/verification-notification', function (Request $request) {
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
 
-Route::get('/auth0/callback', [Auth0Controller::class, 'callback'])->name('auth0-callback');
+Route::get('hello', 'HomeController@postVerify')->name('verify.post')->middleware('auth');
+
+//============================================admin routes============================================//
+
+Route::get('admin/dashboard', 'HomeController@handleAdmin')->name('admin.route')->middleware('admin');
+
+Route::get('admin/profile', 'HomeController@adminProfile')->name('admin.route')->middleware('admin');
+
+Route::get('admin/managebook', 'HomeController@manageBook')->name('admin.book.manage')->middleware('admin');
+
+Route::get('admin/editbook', 'HomeController@editBook')->name('admin.route')->middleware('admin');
+
+Route::get('admin/addbook', 'HomeController@addBook')->name('admin.route')->middleware('admin');
+
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('admin/home', 'HomeController@handleAdmin')->name('admin.route')->middleware('admin');
+
+
+
+//============================================Password reset routing============================================//
+Route::post('reset_password_without_token', 'AccountsController@validatePasswordRequest');
+Route::post('reset_password_with_token', 'AccountsController@resetPassword');
 
 ?>
