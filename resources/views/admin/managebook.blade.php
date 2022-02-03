@@ -63,7 +63,7 @@
                     <div class="col-sm-12">
                         <div class="white-box">
                             <h3 class="box-title">Book Table</h3>
-                            <p class="text-muted">Add <a href="{{route('admin.book.add')}}"><code>Book</code></a></p>   <!-- Add table here -->
+                            <p class="text-muted"><a href="{{route('admin.book.add')}}"><code>Add Book</code></a></p>   <!-- Add table here -->
                             <div class="table-responsive">
                                 <table class="table text-nowrap">
                                     <thead>
