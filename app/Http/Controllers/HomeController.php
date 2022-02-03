@@ -13,7 +13,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(['auth','verified']);
     }
 
     /**
@@ -24,5 +24,38 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+
+    public function handleAdmin()
+    {
+        return view('admin/dashboard');
+    } 
+    
+    public function adminProfile()
+    {
+        return view('admin/profile');
+    } 
+    
+    public function manageBook()
+    {
+        return view('admin/managebook');
+    } 
+
+    public function editBook()
+    {
+        return view('admin/editbook');
+    } 
+
+    public function addBook()
+    {
+        return view('admin/addbook');
+    } 
+
+    public function postVerify(){
+        if (auth()->user()->is_admin == 1) {
+            return redirect()->route('admin.route');
+        }else{
+            return redirect()->route('book.index');
+        }
     }
 }

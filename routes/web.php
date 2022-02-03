@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\Password;
 use Illuminate\Http\Request;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Auth0\Login\Auth0Controller;
+use App\Http\Controllers\Auth\Auth0IndexController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,17 +25,8 @@ use Illuminate\Support\Facades\Hash;
 Route::get('/', 'BookController@index')->name('book.index');
 // Route::get('/dashboard', 'Dashboard@count')->name('dash.count');
 
-Route::get('dashboard', [Dashboard::class, 'count']);
 
 
-Route::get('/login', function () {
-    return view('login');
-});
-
-
-Route::get('/signup', function () {
-    return view('signup');
-});
 
 Route::get('/forgetpass', function () {
     return view('forgetpass');
@@ -44,6 +38,7 @@ Route::get('/history', 'HistoryController@view')->name('book.history')->middlewa
 
 
 Route::get('/search', 'BookController@search')->name('book.search')->middleware('auth');
+//Route::get('/search', 'BookController@search')->name('book.search')->middleware(['auth','verified']);
 
 Route::get('/mybook', function () {
     return view('mybook');
@@ -51,69 +46,78 @@ Route::get('/mybook', function () {
 
 Route::get('/adminlogin', function () {
     return view('admin/adminlogin');
-});
+})->middleware('auth');
 
-// Route::get('/dashboard', function () {
-//     return view('admin/dashboard');
-// });
 
-Route::get('/editbook/{id}', 'BookController@edit')->name('admin.book.edit');
 
-Route::put('/editbook/{id}', 'BookController@save')->name('admin.book.save');
+Auth::routes(['verify'=>true]);
 
-Route::delete('/editbook/{id}', 'BookController@delete')->name('admin.book.delete');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/addbook',function (){return view('admin/addbook');})->name('admin.book.add');
 
-Route::post('/managebook', 'BookController@new')->name('admin.book.new');
 
-Route::get('/managebook', 'BookController@index2')->name('admin.book.manage');
 
-Route::get('/viewUser', 'UserController@view')->name('admin.user.view');
+
+
+
+//============================================Login/Logout routes============================================//
+Route::get('/register', function () {return view('auth.register');})->name('register');
+
+
+
+
 
 Route::get('/profile', function () {
     return view('admin/profile');
 });
 
 
-Auth::routes();
+//============================================email verify routes============================================//
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// #1. Email verification Notice route: Give user instruction to click verification link
+Route::get('/email/verify', function () {
+    return view('auth.verify');
+})->middleware('auth')->name('verification.notice');
 
+// #2 Email Verification Handler: handle user requests generated when the user clicks the email verification link
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
 
+    return redirect('/home');
+})->middleware(['auth', 'signed'])->name('verification.verify');
 
-Route::get('/forgot-password', function () {
-    return view('auth.forgetpass');
-})->middleware('guest')->name('password.request');
+// #2 Resending The Verification Email: resend verification email to user
+Route::post('/email/verification-notification', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
 
-Route::post('/forgot-password', function (Request $request) {
-    $request->validate(['email' => 'required|email']);
-
-    $status = Password::sendResetLink(
-        $request->only('email')
-    );
-
-    return $status === Password::RESET_LINK_SENT
-                ? back()->with(['status' => __($status)])
-                : back()->withErrors(['email' => __($status)]);
-})->middleware('guest')->name('password.email');
-
-Route::post('/forgot-password', function (Request $request) {
-    $request->validate(['email' => 'required|email']);
-
-    $status = Password::sendResetLink(
-        $request->only('email')
-    );
-
-    return $status === Password::RESET_LINK_SENT
-                ? back()->with(['status' => __($status)])
-                : back()->withErrors(['email' => __($status)]);
-})->middleware('guest')->name('password.email');
+    return back()->with('message', 'Verification link sent!');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
 
-Route::get('/reset-password/{token}', function ($token) {
-    return view('auth.passwords.reset', ['token' => $token]);
-})->middleware('guest')->name('password.reset');
+Route::get('hello', 'HomeController@postVerify')->name('verify.post')->middleware('auth');
 
+//============================================admin routes============================================//
+
+Route::get('admin/dashboard', 'HomeController@handleAdmin')->name('admin.route')->middleware('admin');
+
+Route::get('dashboard', [Dashboard::class, 'count']);
+
+Route::delete('/editbook/{id}', 'BookController@delete')->name('admin.book.delete');
+Route::get('/addbook',function (){return view('admin/addbook');})->name('admin.book.add');
+Route::post('/managebook', 'BookController@new')->name('admin.book.new');
+Route::get('/managebook', 'BookController@index2')->name('admin.book.manage');
+Route::put('/editbook/{id}', 'BookController@save')->name('admin.book.save');
+Route::get('/editbook/{id}', 'BookController@edit')->name('admin.book.edit');
+
+Route::get('/viewUser', 'UserController@view')->name('admin.user.view');
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('admin/home', 'HomeController@handleAdmin')->name('admin.route')->middleware('admin');
+
+
+
+//============================================Password reset routing============================================//
+Route::post('reset_password_without_token', 'AccountsController@validatePasswordRequest');
+Route::post('reset_password_with_token', 'AccountsController@resetPassword');
 
 ?>
