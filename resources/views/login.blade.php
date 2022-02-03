@@ -23,7 +23,7 @@
                                     src="https://www.pngitem.com/pimgs/m/62-622830_png-books-black-and-white-book-logo-transparent.png"> </div>
                             <h3 class="mb-5 text-center heading">BookHub</h3>
                             <h6 class="msg-info">Please login to your account</h6>
-                            <div class="form-group"> <label class="form-control-label text-muted">Username</label>
+                            <div class="form-group"> <label class="form-control-label text-muted">Emial</label>
                                 <input type="email" id="email" name="email" placeholder="Email"
                                     class="form-control">
                             </div>

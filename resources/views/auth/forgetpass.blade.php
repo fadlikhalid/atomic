@@ -18,13 +18,11 @@
                 <div class="card card1">
                     <div class="row justify-content-center my-auto">
                         <div class="col-md-8 col-10 my-5">
-                            <div class="row justify-content-center px-3 mb-3"> <img id="logo"
-                                    src="https://www.pngitem.com/pimgs/m/62-622830_png-books-black-and-white-book-logo-transparent.png"> </div>
+                            <div class="row justify-content-center px-3 mb-3"> <img id="logo" src="https://www.pngitem.com/pimgs/m/62-622830_png-books-black-and-white-book-logo-transparent.png"> </div>
                             <h3 class="mb-5 text-center heading">BookHub</h3>
                             <h6 class="msg-info">Change Password</h6>
                             <div class="form-group"> <label class="form-control-label text-muted">Username</label>
-                                <input type="email" id="email" name="email" placeholder="Email"
-                                    class="form-control">
+                                <input type="email" id="email" name="email" placeholder="Email" class="form-control">
                             </div>
                             <div class="form-group"> <label class="form-control-label text-muted">Password</label>
                                 <input type="password" id="psw" name="psw" placeholder="Password" class="form-control">
@@ -33,20 +31,18 @@
                                 <input type="password" id="psw" name="psw" placeholder="Password" class="form-control">
                             </div>
                             <div class="row justify-content-center my-3 px-3"> <button class="btn-block btn-color">Change Password</button> </div>
-                            
+
                         </div>
                     </div>
                     <div class="bottom text-center mb-5">
-                        <a href="signup" class="sm-text mx-auto mb-3">Don't have an account?<button
-                                class="btn btn-white ml-2">Create new</button></a>
+                        <a href="signup" class="sm-text mx-auto mb-3">Don't have an account?<button class="btn btn-white ml-2">Create new</button></a>
                     </div>
                 </div>
                 <div class="card card2">
                     <div class="my-auto mx-md-5 px-md-5 right">
-                        <h3 class="text-white">We are more than just a company</h3> <small class="text-white">Lorem
-                            ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat.</small>
+                        <h3 class="text-white">BookHub: leisure with literature</h3> <small class="text-white">BookHub is a one stop
+                            literature platform for all to read. Various genres from education to mistery, from novel to magazine, we got all you want.
+                        </small>
                     </div>
                 </div>
             </div>
