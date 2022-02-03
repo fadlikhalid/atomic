@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html dir="ltr" lang="en">
+<html dir="ltr" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
     <meta charset="utf-8">
@@ -63,7 +63,7 @@
                     <div class="col-sm-12">
                         <div class="white-box">
                             <h3 class="box-title">Book Table</h3>
-                            <p class="text-muted">Add class <code>.table</code></p>
+                            <p class="text-muted">Add <a href="{{route('admin.book.add')}}"><code>Book</code></a></p>   <!-- Add table here -->
                             <div class="table-responsive">
                                 <table class="table text-nowrap">
                                     <thead>
@@ -77,54 +77,16 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    @foreach($books as $book)
                                         <tr>
-                                            <td>1</td>
-                                            <td>Harry Potter</td>
-                                            <td>J. K. Rowling</td>
-                                            <td>June 26, 1997</td>
-                                            <td>240 Page</td>
-                                            <td><button type="button" class="btn btn-outline-primary">Edit</button></td>
+                                            <td>{{$book->book_id}}</td>
+                                            <td>{{$book->book_name}}</td>
+                                            <td>{{$book->author}}</td>
+                                            <td>{{$book->published}}</td>
+                                            <td>{{$book->total_page}}</td>
+                                            <td><a href="{{route('admin.book.edit', $book->book_id)}}"><button type="button" class="btn btn-outline-primary">Edit</button></a></td>
                                         </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Harry Potter</td>
-                                            <td>J. K. Rowling</td>
-                                            <td>June 26, 1997</td>
-                                            <td>240 Page</td>
-                                            <td><button type="button" class="btn btn-outline-primary">Edit</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Harry Potter</td>
-                                            <td>J. K. Rowling</td>
-                                            <td>June 26, 1997</td>
-                                            <td>240 Page</td>
-                                            <td><button type="button" class="btn btn-outline-primary">Edit</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td>Harry Potter</td>
-                                            <td>J. K. Rowling</td>
-                                            <td>June 26, 1997</td>
-                                            <td>240 Page</td>
-                                            <td><button type="button" class="btn btn-outline-primary">Edit</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>5</td>
-                                            <td>Harry Potter</td>
-                                            <td>J. K. Rowling</td>
-                                            <td>June 26, 1997</td>
-                                            <td>240 Page</td>
-                                            <td><button type="button" class="btn btn-outline-primary">Edit</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>6</td>
-                                            <td>Harry Potter</td>
-                                            <td>J. K. Rowling</td>
-                                            <td>June 26, 1997</td>
-                                            <td>240 Page</td>
-                                            <td><button type="button" class="btn btn-outline-primary">Edit</button></td>
-                                        </tr>
+                                    @endforeach  
                                     </tbody>
                                 </table>
                             </div>

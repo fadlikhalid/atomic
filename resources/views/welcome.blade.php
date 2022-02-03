@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
 	<meta charset="utf-8">
@@ -176,15 +176,7 @@
 							</div>
 
 							<!-- Start Video Review Content -->
-							<div class="mu-video-review-content">
-							<div class="mu-book-overview-single">											
-											<span class="mu-book-overview-icon-box">
-												<img src="/book/cover/{{ $book->book_cover }}" alt="Author Image" class="imgcover"></img>
-											</span>
-											<h4>{{$book->book_name }}</h4>
-											<p>Author : {{$book->author}}</p>
-											<p>Genre : {{$book->genre}}</p>
-										</div>	</div>
+							<
 							<!-- End Video Review Content -->
 
 						</div>

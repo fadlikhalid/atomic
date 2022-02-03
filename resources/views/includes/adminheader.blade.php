@@ -83,24 +83,17 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="profile"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('admin.user.view')}}"
                                 aria-expanded="false">
                                 <i class="fa fa-user" aria-hidden="true"></i>
-                                <span class="hide-menu">Profile</span>
+                                <span class="hide-menu">User</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="managebook"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('admin.book.manage')}}"
                                 aria-expanded="false">
                                 <i class="fa fa-table" aria-hidden="true"></i>
                                 <span class="hide-menu">Manage Book</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="editbook"
-                                aria-expanded="false">
-                                <i class="fa fa-columns" aria-hidden="true"></i>
-                                <span class="hide-menu">Edit Page</span>
                             </a>
                         </li>
                     </ul>

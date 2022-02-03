@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
     <meta charset="utf-8">
@@ -41,22 +41,7 @@
         <div class="container">
             <div class="row">
 
-                <div class="col-md-6 col-sm-6 col-sm-push-6">
-                    <div class="mu-hero-right">
-                        <img src="/css/landing/images/ebook.png" alt="Ebook img">
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-sm-6 col-sm-pull-6">
-                    <div class="mu-hero-left">
-                        <h1>Perfect Landing Page Template to Present Your eBook</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam saepe, recusandae quidem
-                            nulla! Eveniet explicabo perferendis aut, ab quos omnis labore laboriosam quisquam hic
-                            deserunt ipsum maxime aspernatur velit impedit.</p>
-                        <!-- Masukin a href buat subs page --><a href="" class="mu-primary-btn">Subscribe now</a>
-                        <span>*Avaliable for 3 Package.</span>
-                    </div>
-                </div>
+                
 
             </div>
         </div>
@@ -69,54 +54,7 @@
     <main role="main">
 
         <!-- Start Counter -->
-        <section id="mu-counter">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="mu-counter-area">
-
-                            <div class="mu-counter-block">
-                                <div class="row">
-
-                                    <!-- Start Single Counter -->
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="mu-single-counter">
-                                            <i class="fa fa-files-o" aria-hidden="true"></i>
-                                            <div class="counter-value" data-count="650">0</div>
-                                            <h5 class="mu-counter-name">Total Pages</h5>
-                                        </div>
-                                    </div>
-                                    <!-- / Single Counter -->
-
-                                    <!-- Start Single Counter -->
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="mu-single-counter">
-                                            <i class="fa fa-file-text-o" aria-hidden="true"></i>
-                                            <div class="counter-value" data-count="422">0</div>
-                                            <h5 class="mu-counter-name">Chapters</h5>
-                                        </div>
-                                    </div>
-                                    <!-- / Single Counter -->
-
-                                    <!-- Start Single Counter -->
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="mu-single-counter">
-                                            <i class="fa fa-users" aria-hidden="true"></i>
-                                            <div class="counter-value" data-count="1055">0</div>
-                                            <h5 class="mu-counter-name">Active Readers</h5>
-                                        </div>
-                                    </div>
-                                    <!-- / Single Counter -->
-
-                                </div>
-                            </div>
-
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        
         <!-- End Counter -->
         
         <!-- Start Author -->
@@ -126,64 +64,25 @@
                     <div class="col-md-12">
                         <div class="mu-author-area">
                             <!-- Start Author Content -->
+                            @foreach($history as $histor)
                             <div class="mu-author-content">
                                 <div class="row">
                                     <div class="col-md-2">
                                         <div class="mu-author-image">
-                                            <img src="https://media.harrypotterfanzone.com/deathly-hallows-us-childrens-edition.jpg" alt="Author Image" class="imgcover">
+                                            <img src="/book/cover/{{ $histor->cover}}" alt="Author Image" class="imgcover">
                                         </div>
                                     </div>
                                     <div class="col-md-10">
                                         <div class="mu-author-info">
-                                            <h3>Harry Potter</h3>
+                                            <a href="{{ route('book.display', $histor->book_id) }}"><h3>{{ $histor->name }}</h3></a>
                                             <ul>
-                                                <li><p>Last Time Read : 21 December 2021</p></li>
-                                                <li><p>Page Readed : 21 of 241 Page</p></li>
+                                                <li><p>Last Time Read : {{ $histor->updated_at }}</p></li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- End Author Content -->
-                            <!-- Start Author Content -->
-                            <div class="mu-author-content">
-                                <div class="row">
-                                    <div class="col-md-2">
-                                        <div class="mu-author-image">
-                                            <img src="https://m.media-amazon.com/images/I/71-++hbbERL._AC_SY679_.jpg" alt="Author Image" class="imgcover">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-10">
-                                        <div class="mu-author-info">
-                                        <h3>Harry Potter</h3>
-                                            <ul>
-                                                <li><p>Last Time Read : 21 December 2021</p></li>
-                                                <li><p>Page Readed : 21 of 241 Page</p></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Author Content -->
-                            <!-- Start Author Content -->
-                            <div class="mu-author-content">
-                                <div class="row">
-                                    <div class="col-md-2">
-                                        <div class="mu-author-image">
-                                            <img src="https://images-na.ssl-images-amazon.com/images/I/815rLjPo9KL.jpg" alt="Author Image" class="imgcover">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-10">
-                                        <div class="mu-author-info">
-                                        <h3>Becoming</h3>
-                                            <ul>
-                                                <li><p>Last Time Read : 21 December 2021</p></li>
-                                                <li><p>Page Readed : 21 of 241 Page</p></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                             <!-- End Author Content -->
                         </div>
                     </div>
