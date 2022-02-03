@@ -24,7 +24,7 @@
                             <h3 class="mb-5 text-center heading">BookHub</h3>
                             <h6 class="msg-info">Verify Email</h6>
 
-                            
+
                             {{ __('Before proceeding, please check your email for a verification link.') }}
                             {{ __('If you did not receive the email') }},
 
@@ -51,10 +51,9 @@
                 </div>
                 <div class="card card2">
                     <div class="my-auto mx-md-5 px-md-5 right">
-                        <h3 class="text-white">We are more than just a company</h3> <small class="text-white">Lorem
-                            ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat.</small>
+                        <h3 class="text-white">BookHub: leisure with literature</h3> <small class="text-white">BookHub is a one stop
+                            literature platform for all to read. Various genres from education to mistery, from novel to magazine, we got all you want.
+                        </small>
                     </div>
                 </div>
             </div>

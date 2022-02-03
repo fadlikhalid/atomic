@@ -24,15 +24,15 @@
                             <h3 class="mb-5 text-center heading">BookHub</h3>
                             <h6 class="msg-info">Welcome to BookHub</h6>
 
-                            
-                             {{ __('Now you can read variations of book available here.') }}
 
-                            
-                               
-                                <div class="row justify-content-center my-3 px-3">
-                                    <a href="{{route('verify.post')}}"><button type="submit" class="btn-block btn-color">{{ __('continue to bookhub') }}</button></a>
-                                </div>
-                            
+                            {{ __('Now you can read variations of book available here.') }}
+
+
+
+                            <div class="row justify-content-center my-3 px-3">
+                                <a href="{{route('verify.post')}}"><button type="submit" class="btn-block btn-color">{{ __('continue to bookhub') }}</button></a>
+                            </div>
+
 
 
 
@@ -42,7 +42,9 @@
                 </div>
                 <div class="card card2">
                     <div class="my-auto mx-md-5 px-md-5 right">
-                        
+                        <h3 class="text-white">BookHub: leisure with literature</h3> <small class="text-white">BookHub is a one stop
+                            literature platform for all to read. Various genres from education to mistery, from novel to magazine, we got all you want.
+                        </small>
                     </div>
                 </div>
             </div>
