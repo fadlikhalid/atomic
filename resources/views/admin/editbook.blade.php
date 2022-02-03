@@ -62,7 +62,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="white-box">
-                                <div class="form-group"> <label class="form-control-label text-muted">Username</label>
+                                <div class="form-group"> <label class="form-control-label text-muted">Book Name</label>
                                     <input type="text" id="bname" name="bname" value="{{$book->book_name}}" class="form-control">
                                 </div>
                                 <div class="form-group"> <label class="form-control-label text-muted">Author</label>

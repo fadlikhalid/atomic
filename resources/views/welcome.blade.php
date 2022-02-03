@@ -41,17 +41,18 @@
 		<div class="container">
 			<div class="row">
 
-				<div class="col-md-6 col-sm-6 col-sm-push-6">
+				<div class="col-md-6 col-sm-6 col-sm-push-6	">
 					<div class="mu-hero-right">
-						<img src="/css/landing/images/ebook.png" alt="Ebook img">
+						<img src="/css/landing/images/ebook.png" alt="Ebook img" style="margin-top: -120px;">
 					</div>
 				</div>
 
 				<div class="col-md-6 col-sm-6 col-sm-pull-6">
 					<div class="mu-hero-left">
-						<h1>Perfect Landing Page Template to Present Your eBook</h1>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam saepe, recusandae quidem nulla! Eveniet explicabo perferendis aut, ab quos omnis labore laboriosam quisquam hic deserunt ipsum maxime aspernatur velit impedit.</p>
-						<!-- Masukin a href buat subs page --><a href="" class="mu-primary-btn">Subscribe now</a>
+						<h1>BookHub: leisure with literature</h1>
+						<p>BookHub is a one stop
+							literature platform for all to read. Various genres from education to mistery, from novel to magazine, we got all you want.</p>
+						<a href="" class="mu-primary-btn">Subscribe now</a>
 						<span>*Avaliable for 3 Package.</span>
 					</div>
 				</div>
@@ -172,13 +173,25 @@
 						<div class="mu-video-review-area">
 
 							<div class="mu-heading-area">
-								<h2 class="mu-heading-title">Check Out Our Recommended Book of the week</h2>
+								<h2 class="mu-heading-title">Check Out Our Newest Book</h2>
 								<span class="mu-header-dot"></span>
-								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever</p>
+								<p>Fresh Book from our be loved author</p>
 							</div>
 
 							<!-- Start Video Review Content -->
-							< <!-- End Video Review Content -->
+							<a href="{{route('book.display', $latestbook->book_id)}}">
+								<div class="mu-video-review-content">
+									<div class="mu-book-overview-single">
+										<span class="mu-book-overview-icon-box">
+											<img src="/book/cover/{{$latestbook->book_cover}}" alt="Author Image" class="imgcover"></img>
+										</span>
+										<h4>{{$latestbook->book_name}}</h4>
+										<p>Author : {{$latestbook->author}}</p>
+										<p>Genre : {{$latestbook->genre}}</p>
+									</div>
+								</div>
+							</a>
+							<!-- End Video Review Content -->
 
 						</div>
 					</div>

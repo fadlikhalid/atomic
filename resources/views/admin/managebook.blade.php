@@ -6,17 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="keywords"
-        content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Ample lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Ample admin lite dashboard bootstrap 5 dashboard template">
-    <meta name="description"
-        content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
+    <meta name="keywords" content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Ample lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Ample admin lite dashboard bootstrap 5 dashboard template">
+    <meta name="description" content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
     <meta name="robots" content="noindex,nofollow">
     <title>Ample Admin Lite Template by WrapPixel</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="/css/admin/plugins/images/favicon.png">
     <!-- Custom CSS -->
-   <link href="/css/admin/css/style.min.css" rel="stylesheet">
+    <link href="/css/admin/css/style.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -32,8 +30,7 @@
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
-    <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
-        data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+    <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full" data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
         @include('includes.adminheader')
         <!-- Page wrapper  -->
         <!-- ============================================================== -->
@@ -63,13 +60,14 @@
                     <div class="col-sm-12">
                         <div class="white-box">
                             <h3 class="box-title">Book Table</h3>
-                            <p class="text-muted"><a href="{{route('admin.book.add')}}"><code>Add Book</code></a></p>   <!-- Add table here -->
+                            <p class="text-muted"><a href="{{route('admin.book.add')}}"><code>Add Book</code></a></p> <!-- Add table here -->
                             <div class="table-responsive">
                                 <table class="table text-nowrap">
                                     <thead>
                                         <tr>
                                             <th class="border-top-0">#</th>
                                             <th class="border-top-0">Book Name</th>
+                                            <th class="border-top-0">Book ID</th>
                                             <th class="border-top-0">Author</th>
                                             <th class="border-top-0">Published Date</th>
                                             <th class="border-top-0">Total Page</th>
@@ -77,16 +75,17 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($books as $book)
+                                        @foreach($books as $book)
                                         <tr>
-                                            <td>{{$book->book_id}}</td>
+                                            <td>{{$loop->index+1}}</td>
                                             <td>{{$book->book_name}}</td>
+                                            <td>{{$book->book_id}}</td>
                                             <td>{{$book->author}}</td>
                                             <td>{{$book->published}}</td>
                                             <td>{{$book->total_page}}</td>
                                             <td><a href="{{route('admin.book.edit', $book->book_id)}}"><button type="button" class="btn btn-outline-primary">Edit</button></a></td>
                                         </tr>
-                                    @endforeach  
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -111,7 +110,7 @@
             <!-- footer -->
             <!-- ============================================================== -->
             <footer class="footer text-center"> 2021 © BookHub brought to you by
-                </footer>
+            </footer>
             <!-- ============================================================== -->
             <!-- End footer -->
             <!-- ============================================================== -->
