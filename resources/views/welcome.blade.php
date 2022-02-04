@@ -137,7 +137,6 @@
 
 									<!-- Book Overview Single Content -->
 									@foreach($books->slice(0, 4) as $book)
-									<a href="{{route('book.display', $book->book_id)}}">
 										<div class="col-md-3 col-sm-6">
 											<div class="mu-book-overview-single">
 												<span class="mu-book-overview-icon-box">
@@ -148,7 +147,6 @@
 												<p>Genre : {{$book->genre}}</p>
 											</div>
 										</div>
-									</a>
 									@endforeach
 									<!-- End of Book Overview Single Content -->
 
@@ -179,7 +177,6 @@
 							</div>
 
 							<!-- Start Video Review Content -->
-							<a href="{{route('book.display', $latestbook->book_id)}}">
 								<div class="mu-video-review-content">
 									<div class="mu-book-overview-single">
 										<span class="mu-book-overview-icon-box">
@@ -190,7 +187,6 @@
 										<p>Genre : {{$latestbook->genre}}</p>
 									</div>
 								</div>
-							</a>
 							<!-- End Video Review Content -->
 
 						</div>
