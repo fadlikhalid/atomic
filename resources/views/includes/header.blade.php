@@ -30,30 +30,32 @@
                     <ul class="nav navbar-nav mu-menu navbar-right">
                         <li><a href="/">Home</a></li>
                         <li><a href="">Subscription</a></li>
-                        <li><a href="">Genre</a></li> 
+                        <li><a href="">Genre</a></li>
                         <li><a href="{{ route('book.history') }}">History</a></li>
                         <li><a href="{{ route('book.search') }}">Search Book</a></li>
                         @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
+                        @if (Route::has('login'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        </li>
+                        @endif
                         @else
-                            <li class="nav-item dropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('password.request') }}">Reset Password</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
+                                {{ __('Logout') }}
+                            </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                            </li>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </li>                      
                         @endguest
 
-                        
+
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
@@ -61,4 +63,3 @@
     </div>
 </header>
 <!-- End Header -->
-

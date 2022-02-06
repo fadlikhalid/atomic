@@ -31,7 +31,7 @@
                             <form method="POST" action="{{ route('verification.resend') }}">
                                 @csrf
                                 <div class="row justify-content-center my-3 px-3">
-                                    <button type="submit" class="btn-block btn-color">{{ __('click here to request another') }}</button>.
+                                    <button type="submit" class="btn-block btn-color">{{ __('click here to request') }}</button>.
                                 </div>
                             </form>
 
