@@ -163,7 +163,7 @@
 
 
 
-		<!-- Start Video Review -->
+		<!-- Start Video Review 
 		<section id="mu-video-review">
 			<div class="container">
 				<div class="row">
@@ -187,7 +187,7 @@
 										<p>Genre : {{$latestbook->genre}}</p>
 									</div>
 								</div>
-							<!-- End Video Review Content -->
+							 End Video Review Content -->
 
 						</div>
 					</div>
