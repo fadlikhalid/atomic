@@ -163,7 +163,7 @@
 
 
 
-		<!-- Start Video Review 
+		<!-- Start Video Review -->
 		<section id="mu-video-review">
 			<div class="container">
 				<div class="row">
@@ -195,8 +195,6 @@
 			</div>
 		</section>
 		<!-- End Video Review -->
-        
-
 
 
 
