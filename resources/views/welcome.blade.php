@@ -162,7 +162,7 @@
 		<!-- End Book Overview -->
 
 
-<!--
+
 		<!-- Start Video Review 
 		<section id="mu-video-review">
 			<div class="container">
@@ -196,7 +196,7 @@
 		</section>
 		<!-- End Video Review -->
         
-        -->
+
 
 
 
