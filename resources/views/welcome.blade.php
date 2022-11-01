@@ -49,7 +49,7 @@
 
 				<div class="col-md-6 col-sm-6 col-sm-pull-6">
 					<div class="mu-hero-left">
-						<h1>BookHub: leisure with literature: This is a test to check </h1>
+						<h1>BookHub: leisure with literature: This is a test to check atomic deployment</h1>
 						<p>BookHub is a one stop
 							literature platform for all to read. Various genres from education to mistery, from novel to magazine, we got all you want.</p>
 						<a href="" class="mu-primary-btn">Subscribe now</a>
