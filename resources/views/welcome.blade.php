@@ -50,7 +50,7 @@
 				<div class="col-md-6 col-sm-6 col-sm-pull-6">
 					<div class="mu-hero-left">
 						<h1>BookHub: leisure with literature</h1>
-                        <h2>This is a test4</h2>
+                        <h2>Thanks to Aldi for this training</h2>
 						<p>BookHub is a one stop
 							literature platform for all to read. Various genres from education to mistery, from novel to magazine, we got all you want.</p>
 						<a href="" class="mu-primary-btn">Subscribe now</a>
